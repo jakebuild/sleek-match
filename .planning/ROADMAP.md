@@ -7,16 +7,16 @@
 **Depends On:** None
 
 ### Success Criteria
-1. User sees the classic 1-19 sequence in a 9-column dark mode grid.
+1. User sees a 9x9 grid (81 cells) of random numbers 1-9 in a 9-column dark mode grid.
 2. User can tap two matching numbers (equal or sum=10) to clear them.
-3. User cannot select numbers that are blocked by non-empty cells (connectivity check).
+3. User cannot select numbers that are blocked by non-empty cells (connectivity check across horizontal, vertical, and diagonal directions).
 4. Cleared cells appear visually empty but maintain the grid structure.
 
 ### Requirements
-- **GAME-01**: User starts with a fixed "Classic" board (numbers 1-19 sequence)
+- **GAME-01**: User starts with a 9x9 grid of random numbers 1-9
 - **GAME-02**: User can select two matching numbers (equal or sum=10) to clear them
-- **GAME-03**: Selection logic skips already cleared cells (connectivity check)
-- **GRID-01**: Grid renders 9 columns with high performance (FlashList)
+- **GAME-03**: Selection logic skips already cleared cells (connectivity check across horizontal, vertical, and diagonal)
+- **GRID-01**: Grid renders 9 columns with FlatList
 - **GRID-02**: Cleared cells remain visually empty (preserving grid structure)
 - **GRID-04**: UI is strictly Dark Mode with minimalist aesthetic
 

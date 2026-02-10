@@ -3,7 +3,7 @@ status: complete
 phase: full-sweep
 source: 1-core-mechanics-01-SUMMARY.md, 1-core-mechanics-02-SUMMARY.md, 2-game-loop-01-PLAN.md, 2-game-loop-02-PLAN.md, STATE.md (Phase 3)
 started: 2026-02-10T20:00:00Z
-updated: 2026-02-10T20:35:00Z
+updated: 2026-02-10T21:00:00Z
 ---
 
 ## Current Test
@@ -13,7 +13,7 @@ updated: 2026-02-10T20:35:00Z
 ## Tests
 
 ### 1. Grid Renders with Numbers
-expected: App launches showing a dark (#121212) background. A grid of number cells is visible, arranged in 9 columns. The initial board shows the classic 1-19 sequence (29 cells). Numbers displayed in light text on dark surface cells.
+expected: App launches showing a dark (#121212) background. A grid of number cells is visible, arranged in 9 columns. The initial board is a 9x9 grid (81 cells) of random numbers 1-9. Numbers displayed in light text on dark surface cells.
 result: pass
 
 ### 2. Cell Selection Highlight
@@ -21,7 +21,7 @@ expected: Tapping an active number cell highlights it with the accent color (#BB
 result: pass
 
 ### 3. Match Equal Numbers
-expected: Select a number, then tap another cell with the same number that is connected (no active cells between them in row or column). Both cells clear and become empty, maintaining grid structure.
+expected: Select a number, then tap another cell with the same number that is connected (no active cells between them in row, column, or diagonal). Both cells clear and become empty, maintaining grid structure.
 result: pass
 
 ### 4. Match Sum-to-10 Pair
@@ -45,7 +45,7 @@ expected: Tap the "+ Lines" button in the footer. All remaining active (non-clea
 result: pass
 
 ### 9. New Game Resets Board
-expected: Tap the "New" button in the footer. The board resets to a fresh 1-19 sequence, score resets to 0, but high score remains unchanged.
+expected: Tap the "New" button in the footer. The board resets to a fresh 9x9 grid of random numbers 1-9, score resets to 0, but high score remains unchanged.
 result: pass
 
 ### 10. Game Over - No Moves
@@ -81,6 +81,19 @@ issues: 0
 pending: 0
 skipped: 1
 
-## Gaps
+## Post-UAT Gaps Found
 
-[none]
+### Gap A: Wrong Board Generation
+- **Found:** During manual play after UAT pass
+- **Problem:** `src/utils/board.ts` generated a fixed 29-cell "classic" 1-19 sequence instead of a 9x9 grid (81 cells) of random numbers 1-9
+- **Fix:** `generateLevel()` now creates 81 cells with `Math.floor(Math.random() * 9) + 1`
+- **Status:** Fixed
+
+### Gap B: Missing Diagonal Connectivity
+- **Found:** During manual play after UAT pass
+- **Problem:** `src/utils/gameLogic.ts` `areConnected()` only supported horizontal (with row wrap) and vertical paths, but the game rules require diagonal adjacency (all 8 directions, skipping cleared cells)
+- **Fix:** Added diagonal down-right (step=10) and diagonal down-left (step=8) connectivity checks
+- **Status:** Fixed
+
+### Note on UAT Test 1 & Test 9
+Tests 1 and 9 originally referenced "classic 1-19 sequence" which was the old board generation. With the board fix, these tests should now reference "9x9 grid of random numbers 1-9" instead.

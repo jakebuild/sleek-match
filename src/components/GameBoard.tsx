@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { FlashList, ListRenderItemInfo } from '@shopify/flash-list';
+import { StyleSheet, View, FlatList, ListRenderItemInfo } from 'react-native';
 import { useGameStore, useGameActions } from '../store/gameStore';
 import { Cell as CellType } from '../types/game';
 import CellComponent from './Cell';
@@ -23,7 +22,7 @@ const GameBoard = () => {
 
   return (
     <View style={styles.container}>
-      <FlashList<CellType>
+      <FlatList<CellType>
         data={cells}
         renderItem={renderItem}
         numColumns={9}
