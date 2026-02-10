@@ -3,18 +3,20 @@ import { StyleSheet, View } from 'react-native';
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list';
 import { useGameStore, useGameActions } from '../store/gameStore';
 import { Cell as CellType } from '../types/game';
-import Cell from './Cell';
+import CellComponent from './Cell';
 import { colors } from '../theme/colors';
 
 const GameBoard = () => {
   const cells = useGameStore((state) => state.cells);
   const selectedId = useGameStore((state) => state.selectedId);
+  const hintIds = useGameStore((state) => state.hintIds);
   const { selectCell } = useGameActions();
 
   const renderItem = ({ item }: ListRenderItemInfo<CellType>) => (
-    <Cell
+    <CellComponent
       cell={item}
       isSelected={item.id === selectedId}
+      isHinted={hintIds != null && hintIds.includes(item.id)}
       onPress={() => selectCell(item.id)}
     />
   );
@@ -25,7 +27,7 @@ const GameBoard = () => {
         data={cells}
         renderItem={renderItem}
         numColumns={9}
-        extraData={selectedId}
+        extraData={`${selectedId}-${hintIds?.join(',')}`}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContent}
       />

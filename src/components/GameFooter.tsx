@@ -6,62 +6,89 @@ import { colors } from '../theme/colors';
 const GameFooter = () => {
   const history = useGameStore((state) => state.history);
   const gameStatus = useGameStore((state) => state.gameStatus);
-  const { addLines, undo, resetGame } = useGameActions();
+  const soundEnabled = useGameStore((state) => state.soundEnabled);
+  const { addLines, undo, resetGame, showHint, toggleSound } = useGameActions();
 
   const canUndo = history.length > 0;
   const canAddLines = gameStatus !== 'won';
+  const isPlaying = gameStatus === 'playing';
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={[styles.button, !canAddLines && styles.buttonDisabled]}
-        onPress={addLines}
-        disabled={!canAddLines}
-        activeOpacity={0.7}
-      >
-        <Text style={[styles.buttonText, !canAddLines && styles.buttonTextDisabled]}>
-          Add Lines
-        </Text>
-      </TouchableOpacity>
+      <View style={styles.row}>
+        <TouchableOpacity
+          style={[styles.button, !canAddLines && styles.buttonDisabled]}
+          onPress={addLines}
+          disabled={!canAddLines}
+          activeOpacity={0.7}
+        >
+          <Text style={[styles.buttonText, !canAddLines && styles.buttonTextDisabled]}>
+            + Lines
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.button, !canUndo && styles.buttonDisabled]}
-        onPress={undo}
-        disabled={!canUndo}
-        activeOpacity={0.7}
-      >
-        <Text style={[styles.buttonText, !canUndo && styles.buttonTextDisabled]}>
-          Undo
-        </Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, !canUndo && styles.buttonDisabled]}
+          onPress={undo}
+          disabled={!canUndo}
+          activeOpacity={0.7}
+        >
+          <Text style={[styles.buttonText, !canUndo && styles.buttonTextDisabled]}>
+            Undo
+          </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={[styles.button, styles.resetButton]}
-        onPress={resetGame}
-        activeOpacity={0.7}
-      >
-        <Text style={styles.buttonText}>New Game</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, !isPlaying && styles.buttonDisabled]}
+          onPress={showHint}
+          disabled={!isPlaying}
+          activeOpacity={0.7}
+        >
+          <Text style={[styles.buttonText, !isPlaying && styles.buttonTextDisabled]}>
+            Hint
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={toggleSound}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.buttonText}>
+            {soundEnabled ? 'Sound' : 'Muted'}
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.button, styles.resetButton]}
+          onPress={resetGame}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.buttonText}>New</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 8,
     backgroundColor: colors.background,
     borderTopWidth: 1,
     borderTopColor: colors.surface,
   },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    gap: 6,
+  },
   button: {
-    paddingHorizontal: 16,
+    flex: 1,
     paddingVertical: 10,
     backgroundColor: colors.surface,
     borderRadius: 8,
-    minWidth: 90,
     alignItems: 'center',
   },
   buttonDisabled: {
@@ -71,7 +98,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.accent,
   },
   buttonText: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
     color: colors.text,
   },

@@ -14,6 +14,8 @@ export interface GameActions {
   selectCell: (id: string) => void;
   addLines: () => void;
   undo: () => void;
+  showHint: () => void;
+  toggleSound: () => void;
 }
 
 export interface GameState {
@@ -23,5 +25,7 @@ export interface GameState {
   highScore: number;
   gameStatus: 'playing' | 'won' | 'lost';
   history: HistoryEntry[];
+  hintIds: string[] | null; // IDs of cells to highlight as hint
+  soundEnabled: boolean;
   actions: GameActions;
 }
