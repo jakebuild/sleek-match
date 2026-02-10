@@ -63,5 +63,5 @@
 | Phase | Status | Completion |
 |-------|--------|------------|
 | Phase 1: Core Mechanics | **Complete** | 100% |
-| Phase 2: Game Loop & Persistence | **Active** | 0% |
-| Phase 3: Polish & Experience | Pending | 0% |
+| Phase 2: Game Loop & Persistence | **Complete** | 100% |
+| Phase 3: Polish & Experience | **Complete** | 100% |
