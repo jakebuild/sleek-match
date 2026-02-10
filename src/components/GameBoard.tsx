@@ -24,9 +24,8 @@ const GameBoard = () => {
       <FlashList<CellType>
         data={cells}
         renderItem={renderItem}
-        estimatedItemSize={50}
         numColumns={9}
-        extraData={selectedId} // Re-render when selectedId changes
+        extraData={selectedId}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContent}
       />
