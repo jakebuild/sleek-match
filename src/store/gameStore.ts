@@ -2,25 +2,55 @@ import { create } from 'zustand';
 import { GameState, Cell } from '../types/game';
 import { generateLevel } from '../utils/board';
 import { areConnected, isMatch, hasValidMoves, getActiveCellCount } from '../utils/gameLogic';
+import { saveGameState, loadGameState, clearGameState, saveHighScore, loadHighScore } from '../utils/storage';
 
 let nextId = 1000;
 
-const createInitialState = () => ({
+const createFreshState = () => ({
   cells: generateLevel(),
   selectedId: null as string | null,
   score: 0,
-  highScore: 0,
   gameStatus: 'playing' as const,
   history: [] as Array<{ cells: Cell[]; score: number }>,
 });
 
+// Try to restore previous session
+const getInitialState = () => {
+  const saved = loadGameState();
+  const highScore = loadHighScore();
+
+  if (saved) {
+    // Compute nextId from restored cells to avoid ID collisions
+    const maxId = saved.cells.reduce((max, c) => {
+      const num = parseInt(c.id.replace('cell-', ''), 10);
+      return isNaN(num) ? max : Math.max(max, num);
+    }, 0);
+    nextId = maxId + 1;
+
+    return {
+      cells: saved.cells,
+      selectedId: null as string | null,
+      score: saved.score,
+      highScore,
+      gameStatus: saved.gameStatus,
+      history: saved.history,
+    };
+  }
+
+  return {
+    ...createFreshState(),
+    highScore,
+  };
+};
+
 export const useGameStore = create<GameState>((set, get) => ({
-  ...createInitialState(),
+  ...getInitialState(),
   actions: {
     resetGame: () => {
       nextId = 1000;
+      clearGameState();
       set({
-        ...createInitialState(),
+        ...createFreshState(),
         highScore: get().highScore, // preserve high score
       });
     },
@@ -78,13 +108,28 @@ export const useGameStore = create<GameState>((set, get) => ({
           newStatus = 'lost';
         }
 
-        set({
+        // Persist high score if beaten
+        if (newHighScore > state.highScore) {
+          saveHighScore(newHighScore);
+        }
+
+        const newState = {
           cells: newCells,
           selectedId: null,
           score: newScore,
           highScore: newHighScore,
           gameStatus: newStatus,
           history: [...state.history, historyEntry],
+        };
+
+        set(newState);
+
+        // Auto-save game state
+        saveGameState({
+          cells: newState.cells,
+          score: newState.score,
+          gameStatus: newState.gameStatus,
+          history: newState.history,
         });
       } else {
         // Invalid match, switch selection to new cell
@@ -112,11 +157,21 @@ export const useGameStore = create<GameState>((set, get) => ({
       // Check if valid moves exist after adding lines
       const newStatus = hasValidMoves(newCells) ? 'playing' : 'lost';
 
-      set({
+      const newState = {
         cells: newCells,
         selectedId: null,
         gameStatus: newStatus as 'playing' | 'won' | 'lost',
         history: [...state.history, historyEntry],
+      };
+
+      set(newState);
+
+      // Auto-save
+      saveGameState({
+        cells: newState.cells,
+        score: state.score,
+        gameStatus: newState.gameStatus,
+        history: newState.history,
       });
     },
 
@@ -136,12 +191,22 @@ export const useGameStore = create<GameState>((set, get) => ({
         newStatus = 'lost';
       }
 
-      set({
+      const newState = {
         cells: lastEntry.cells,
         score: lastEntry.score,
         selectedId: null,
         gameStatus: newStatus,
         history: newHistory,
+      };
+
+      set(newState);
+
+      // Auto-save
+      saveGameState({
+        cells: newState.cells,
+        score: newState.score,
+        gameStatus: newState.gameStatus,
+        history: newState.history,
       });
     },
   },
