@@ -11,8 +11,8 @@ See: .planning/PROJECT.md (updated 2026-02-11)
 
 Phase: 5 of 6 (Theming)
 Plan: 2 of 2 (05-02: Component migration + settings selector)
-Status: Ready to execute
-Last activity: 2026-02-11 — Completed 05-01 (Theme infrastructure)
+Status: Checkpoint pending (human-verify)
+Last activity: 2026-02-11 — 05-02 Tasks 1-2 complete, awaiting visual verification
 
 Progress: [█████████████░░░░░░░] 67% (4/6 phases complete)
 
@@ -54,6 +54,8 @@ Recent decisions affecting current work:
 - [04-01]: Settings menu items are no-op placeholders for Phase 5 and 6 wiring
 - [05-01]: ThemeContext exposes only { colors, isDark }; preference via useThemeStore directly
 - [05-01]: Backward-compat colors export kept during migration — removed in 05-02
+- [Phase 05-02]: createStyles(colors) with useMemo pattern for all dynamic stylesheets
+- [Phase 05-02]: Theme pills inline in settings row instead of separate screen
 
 ### Known Limitations
 
@@ -75,3 +77,4 @@ None.
 | 2026-02-11 | Antigravity | Completed 04-01-PLAN.md (Settings & Navigation) |
 | 2026-02-11 | Antigravity | Session resumed, Phase 5 plans exist and ready to execute |
 | 2026-02-11 | Antigravity | Completed 05-01-PLAN.md (Theme infrastructure) |
+| 2026-02-11 | Antigravity | 05-02 Tasks 1-2 complete, checkpoint pending |
