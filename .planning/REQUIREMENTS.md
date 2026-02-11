@@ -108,9 +108,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| NAV-01 | Phase 4 | Pending |
-| NAV-02 | Phase 4 | Pending |
-| NAV-03 | Phase 4 | Pending |
+| NAV-01 | Phase 4 | Complete |
+| NAV-02 | Phase 4 | Complete |
+| NAV-03 | Phase 4 | Complete |
 | THEME-01 | Phase 5 | Pending |
 | THEME-02 | Phase 5 | Pending |
 | THEME-03 | Phase 5 | Pending |
@@ -128,4 +128,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-02-11*
-*Last updated: 2026-02-11 after v1.1 milestone definition*
+*Last updated: 2026-02-11 after Phase 4 completion*
