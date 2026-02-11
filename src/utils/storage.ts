@@ -17,6 +17,7 @@ const getStorage = (): MMKV | null => {
 const KEYS = {
   GAME_STATE: 'game_state',
   HIGH_SCORE: 'high_score',
+  THEME_PREFERENCE: 'theme_preference',
 } as const;
 
 interface SavedGameState {
@@ -75,5 +76,21 @@ export const loadHighScore = (): number => {
     return s.getNumber(KEYS.HIGH_SCORE) ?? 0;
   } catch {
     return 0;
+  }
+};
+
+export const saveThemePreference = (pref: string): void => {
+  try {
+    getStorage()?.set(KEYS.THEME_PREFERENCE, pref);
+  } catch {
+    // Silently fail — app still works with default theme
+  }
+};
+
+export const loadThemePreference = (): string | null => {
+  try {
+    return getStorage()?.getString(KEYS.THEME_PREFERENCE) ?? null;
+  } catch {
+    return null;
   }
 };
