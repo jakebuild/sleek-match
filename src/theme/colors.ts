@@ -30,6 +30,3 @@ export const lightColors: ThemeColors = {
   selectedBorder: '#6200EE',
   selectedBackground: '#E8DEF8',
 };
-
-// Backward-compat alias — removed after SettingsScreen migration in Task 2
-export const colors = darkColors;
