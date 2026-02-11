@@ -1,7 +1,8 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef, useMemo } from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, Animated } from 'react-native';
 import { Cell as CellType } from '../types/game';
-import { colors } from '../theme/colors';
+import { useTheme } from '../theme/ThemeContext';
+import { ThemeColors } from '../theme/colors';
 
 interface CellProps {
   cell: CellType;
@@ -14,6 +15,8 @@ const CellComponent = memo(({ cell, isSelected, isHinted, onPress }: CellProps) 
   const scaleAnim = useRef(new Animated.Value(1)).current;
   const opacityAnim = useRef(new Animated.Value(1)).current;
   const hintAnim = useRef(new Animated.Value(0)).current;
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const isCleared = cell.status === 'cleared';
 
@@ -112,43 +115,44 @@ const CellComponent = memo(({ cell, isSelected, isHinted, onPress }: CellProps) 
   );
 });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    aspectRatio: 1,
-    margin: 2,
-  },
-  active: {
-    flex: 1,
-    backgroundColor: colors.surface,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  selected: {
-    backgroundColor: colors.selectedBackground,
-    borderWidth: 2,
-    borderColor: colors.accent,
-  },
-  hintOverlay: {
-    flex: 1,
-    width: '100%',
-    borderRadius: 8,
-    borderWidth: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: colors.text,
-  },
-  selectedText: {
-    color: colors.accent,
-  },
-  hintText: {
-    color: '#4CAF50',
-  },
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      aspectRatio: 1,
+      margin: 2,
+    },
+    active: {
+      flex: 1,
+      backgroundColor: colors.surface,
+      borderRadius: 8,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    selected: {
+      backgroundColor: colors.selectedBackground,
+      borderWidth: 2,
+      borderColor: colors.accent,
+    },
+    hintOverlay: {
+      flex: 1,
+      width: '100%',
+      borderRadius: 8,
+      borderWidth: 2,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    text: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: colors.text,
+    },
+    selectedText: {
+      color: colors.accent,
+    },
+    hintText: {
+      color: '#4CAF50',
+    },
+  });
 
 export default CellComponent;

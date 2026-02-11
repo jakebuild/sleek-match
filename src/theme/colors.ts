@@ -31,5 +31,5 @@ export const lightColors: ThemeColors = {
   selectedBackground: '#E8DEF8',
 };
 
-// Backward-compat alias — removed in Plan 05-02 when components migrate to useTheme()
+// Backward-compat alias — removed after SettingsScreen migration in Task 2
 export const colors = darkColors;

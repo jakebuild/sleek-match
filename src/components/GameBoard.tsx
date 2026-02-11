@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, View, FlatList, ListRenderItemInfo } from 'react-native';
 import { useGameStore, useGameActions } from '../store/gameStore';
 import { Cell as CellType } from '../types/game';
 import CellComponent from './Cell';
-import { colors } from '../theme/colors';
+import { useTheme } from '../theme/ThemeContext';
+import { ThemeColors } from '../theme/colors';
 
 const GameBoard = () => {
   const cells = useGameStore((state) => state.cells);
   const selectedId = useGameStore((state) => state.selectedId);
   const hintIds = useGameStore((state) => state.hintIds);
   const { selectCell } = useGameActions();
+  const { colors } = useTheme();
+  const styles = useMemo(() => createStyles(colors), [colors]);
 
   const renderItem = ({ item }: ListRenderItemInfo<CellType>) => (
     <CellComponent
@@ -34,14 +37,15 @@ const GameBoard = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  listContent: {
-    padding: 10,
-  },
-});
+const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    listContent: {
+      padding: 10,
+    },
+  });
 
 export default GameBoard;
