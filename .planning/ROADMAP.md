@@ -72,10 +72,11 @@ Plans:
   2. User can select Light, Dark, or System from a theme toggle in settings.
   3. User's theme preference persists across app restarts.
   4. All existing screens (game, settings) render correctly in both light and dark themes.
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: TBD
+- [ ] 05-01-PLAN.md — Theme infrastructure: color palettes, theme store, ThemeContext, and app shell wiring
+- [ ] 05-02-PLAN.md — Migrate all components to useTheme(), wire settings selector, visual verification
 
 ### Phase 6: Info & Legal Screens
 **Goal**: User can access game rules, about info, report issues, and legal pages from settings
@@ -101,5 +102,5 @@ Plans:
 | 2. Game Loop & Persistence | v1.0 | 3/3 | Complete | 2026-02-10 |
 | 3. Polish & Experience | v1.0 | 3/3 | Complete | 2026-02-10 |
 | 4. Settings & Navigation | v1.1 | 1/1 | Complete | 2026-02-11 |
-| 5. Theming | v1.1 | 0/? | Not started | - |
+| 5. Theming | v1.1 | 0/2 | Not started | - |
 | 6. Info & Legal Screens | v1.1 | 0/? | Not started | - |
