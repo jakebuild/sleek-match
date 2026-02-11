@@ -44,7 +44,7 @@
 
 **Milestone Goal:** Add light mode support, settings screen, and informational pages so the app feels complete and app-store ready.
 
-- [ ] **Phase 4: Settings & Navigation** - Screen structure and navigation skeleton
+- [x] **Phase 4: Settings & Navigation** - Screen structure and navigation skeleton
 - [ ] **Phase 5: Theming** - Light/dark/system theme with persistence
 - [ ] **Phase 6: Info & Legal Screens** - Rules, about, report issue, privacy, and terms
 
@@ -61,7 +61,7 @@
 **Plans**: 1 plan
 
 Plans:
-- [ ] 04-01-PLAN.md — Add stack navigation, gear icon in header, and settings hub screen
+- [x] 04-01-PLAN.md — Add stack navigation, gear icon in header, and settings hub screen
 
 ### Phase 5: Theming
 **Goal**: App appearance adapts to user's theme preference with persistence
@@ -100,6 +100,6 @@ Plans:
 | 1. Core Mechanics | v1.0 | 3/3 | Complete | 2026-02-10 |
 | 2. Game Loop & Persistence | v1.0 | 3/3 | Complete | 2026-02-10 |
 | 3. Polish & Experience | v1.0 | 3/3 | Complete | 2026-02-10 |
-| 4. Settings & Navigation | v1.1 | 0/? | Not started | - |
+| 4. Settings & Navigation | v1.1 | 1/1 | Complete | 2026-02-11 |
 | 5. Theming | v1.1 | 0/? | Not started | - |
 | 6. Info & Legal Screens | v1.1 | 0/? | Not started | - |

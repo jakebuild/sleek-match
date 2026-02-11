@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-02-11)
 
 **Core value:** A frictionless, beautiful puzzle experience that works perfectly offline and respects the player's time.
-**Current focus:** Phase 4 — Settings & Navigation
+**Current focus:** Phase 5 — Theming
 
 ## Current Position
 
-Phase: 4 of 6 (Settings & Navigation)
+Phase: 5 of 6 (Theming)
 Plan: TBD (not yet planned)
 Status: Ready to plan
-Last activity: 2026-02-11 — Roadmap created for v1.1 milestone
+Last activity: 2026-02-11 — Completed Phase 4 (Settings & Navigation)
 
-Progress: [██████████░░░░░░░░░░] 50% (3/6 phases complete)
+Progress: [█████████████░░░░░░░] 67% (4/6 phases complete)
 
 ## Game Rules (Canonical)
 
@@ -35,7 +35,7 @@ All 3 phases complete + post-UAT fixes. 14/15 UAT tests passed (1 skipped — MM
 
 **Velocity:**
 - Total plans completed: 9 (v1.0)
-- v1.1 plans completed: 0
+- v1.1 plans completed: 1
 
 *Updated after each plan completion*
 
@@ -49,6 +49,9 @@ Recent decisions affecting current work:
 - [v1.1]: System + Manual Theme — defaults to system setting, user can override
 - [v1.1]: Settings from Header — gear icon opens settings screen (no tabs/drawer)
 - [v1.1]: GitHub Issues for Reports — opens browser to GitHub issues URL
+- [04-01]: Used native stack navigator for native transitions and performance
+- [04-01]: Screens in src/screens/, navigation in src/navigation/
+- [04-01]: Settings menu items are no-op placeholders for Phase 5 and 6 wiring
 
 ### Known Limitations
 
@@ -67,3 +70,4 @@ None.
 | 2026-02-10 | Antigravity | v1.0 Complete (Phases 1-3 + post-UAT fixes) |
 | 2026-02-11 | Antigravity | Milestone v1.1 started: Settings & Theming |
 | 2026-02-11 | Antigravity | v1.1 Roadmap created (Phases 4-6) |
+| 2026-02-11 | Antigravity | Completed 04-01-PLAN.md (Settings & Navigation) |
