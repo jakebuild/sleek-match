@@ -75,7 +75,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01-PLAN.md — Theme infrastructure: color palettes, theme store, ThemeContext, and app shell wiring
+- [x] 05-01-PLAN.md — Theme infrastructure: color palettes, theme store, ThemeContext, and app shell wiring
 - [ ] 05-02-PLAN.md — Migrate all components to useTheme(), wire settings selector, visual verification
 
 ### Phase 6: Info & Legal Screens
@@ -102,5 +102,5 @@ Plans:
 | 2. Game Loop & Persistence | v1.0 | 3/3 | Complete | 2026-02-10 |
 | 3. Polish & Experience | v1.0 | 3/3 | Complete | 2026-02-10 |
 | 4. Settings & Navigation | v1.1 | 1/1 | Complete | 2026-02-11 |
-| 5. Theming | v1.1 | 0/2 | Not started | - |
+| 5. Theming | v1.1 | 1/2 | In progress | - |
 | 6. Info & Legal Screens | v1.1 | 0/? | Not started | - |

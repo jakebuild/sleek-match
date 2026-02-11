@@ -10,9 +10,9 @@ See: .planning/PROJECT.md (updated 2026-02-11)
 ## Current Position
 
 Phase: 5 of 6 (Theming)
-Plan: TBD (not yet planned)
-Status: Ready to plan
-Last activity: 2026-02-11 — Completed Phase 4 (Settings & Navigation)
+Plan: 2 of 2 (05-02: Component migration + settings selector)
+Status: Ready to execute
+Last activity: 2026-02-11 — Completed 05-01 (Theme infrastructure)
 
 Progress: [█████████████░░░░░░░] 67% (4/6 phases complete)
 
@@ -35,7 +35,7 @@ All 3 phases complete + post-UAT fixes. 14/15 UAT tests passed (1 skipped — MM
 
 **Velocity:**
 - Total plans completed: 9 (v1.0)
-- v1.1 plans completed: 1
+- v1.1 plans completed: 2
 
 *Updated after each plan completion*
 
@@ -52,6 +52,8 @@ Recent decisions affecting current work:
 - [04-01]: Used native stack navigator for native transitions and performance
 - [04-01]: Screens in src/screens/, navigation in src/navigation/
 - [04-01]: Settings menu items are no-op placeholders for Phase 5 and 6 wiring
+- [05-01]: ThemeContext exposes only { colors, isDark }; preference via useThemeStore directly
+- [05-01]: Backward-compat colors export kept during migration — removed in 05-02
 
 ### Known Limitations
 
@@ -71,3 +73,5 @@ None.
 | 2026-02-11 | Antigravity | Milestone v1.1 started: Settings & Theming |
 | 2026-02-11 | Antigravity | v1.1 Roadmap created (Phases 4-6) |
 | 2026-02-11 | Antigravity | Completed 04-01-PLAN.md (Settings & Navigation) |
+| 2026-02-11 | Antigravity | Session resumed, Phase 5 plans exist and ready to execute |
+| 2026-02-11 | Antigravity | Completed 05-01-PLAN.md (Theme infrastructure) |
