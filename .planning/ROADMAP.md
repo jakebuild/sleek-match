@@ -1,67 +1,105 @@
 # Roadmap: Sleek Match
 
-**Core Value:** A frictionless, beautiful puzzle experience that works perfectly offline and respects the player's time.
+## Milestones
 
-## Phase 1: Core Mechanics
-**Goal:** Users can play the basic matching game on a static board.
-**Depends On:** None
+- ✅ **v1.0 MVP** - Phases 1-3 (shipped 2026-02-10)
+- 🚧 **v1.1 Settings & Theming** - Phases 4-6 (in progress)
 
-### Success Criteria
-1. User sees a 9x9 grid (81 cells) of random numbers 1-9 in a 9-column dark mode grid.
-2. User can tap two matching numbers (equal or sum=10) to clear them.
-3. User cannot select numbers that are blocked by non-empty cells (connectivity check across horizontal, vertical, and diagonal directions).
-4. Cleared cells appear visually empty but maintain the grid structure.
+## Phases
 
-### Requirements
-- **GAME-01**: User starts with a 9x9 grid of random numbers 1-9
-- **GAME-02**: User can select two matching numbers (equal or sum=10) to clear them
-- **GAME-03**: Selection logic skips already cleared cells (connectivity check across horizontal, vertical, and diagonal)
-- **GRID-01**: Grid renders 9 columns with FlatList
-- **GRID-02**: Cleared cells remain visually empty (preserving grid structure)
-- **GRID-04**: UI is strictly Dark Mode with minimalist aesthetic
+<details>
+<summary>✅ v1.0 MVP (Phases 1-3) - SHIPPED 2026-02-10</summary>
 
-## Phase 2: Game Loop & Persistence
-**Goal:** Users can play a full session with progress saving and helpers.
-**Depends On:** Phase 1
+### Phase 1: Core Mechanics
+**Goal**: Users can play the basic matching game on a static board.
+**Requirements**: GAME-01, GAME-02, GAME-03, GRID-01, GRID-02, GRID-04
+**Success Criteria** (what must be TRUE):
+  1. User sees a 9x9 grid (81 cells) of random numbers 1-9 in a 9-column dark mode grid.
+  2. User can tap two matching numbers (equal or sum=10) to clear them.
+  3. User cannot select numbers that are blocked by non-empty cells (connectivity check across horizontal, vertical, and diagonal directions).
+  4. Cleared cells appear visually empty but maintain the grid structure.
 
-### Success Criteria
-1. User can add new lines when running out of moves (duplicating remaining numbers).
-2. User sees "Game Over" or "Win" state when appropriate.
-3. User can undo the last move.
-4. User can close the app and resume exactly where they left off.
-5. High score updates and persists across app restarts.
+### Phase 2: Game Loop & Persistence
+**Goal**: Users can play a full session with progress saving and helpers.
+**Requirements**: GAME-04, GAME-05, GAME-06, HELP-01, META-01, META-02, META-03, META-04
+**Success Criteria** (what must be TRUE):
+  1. User can add new lines when running out of moves (duplicating remaining numbers).
+  2. User sees "Game Over" or "Win" state when appropriate.
+  3. User can undo the last move.
+  4. User can close the app and resume exactly where they left off.
+  5. High score updates and persists across app restarts.
 
-### Requirements
-- **GAME-04**: User can "Add Lines" to duplicate remaining numbers to the bottom
-- **GAME-05**: Game detects "No Moves Left" state (Win or Lose condition)
-- **GAME-06**: User can reset the board to start over
-- **HELP-01**: User can Undo the last move
-- **META-01**: Game state saves automatically on every move (MMKV)
-- **META-02**: App resumes exactly where left off on launch
-- **META-03**: User can view their current High Score
-- **META-04**: High Score persists across sessions
+### Phase 3: Polish & Experience
+**Goal**: Users enjoy a fluid, responsive experience with audio feedback.
+**Requirements**: GRID-03, HELP-02, HELP-03, AUDIO-01, AUDIO-02
+**Success Criteria** (what must be TRUE):
+  1. User sees smooth animations when matches occur or lines are added (60fps).
+  2. User can request a hint to find a valid move.
+  3. User hears sound effects on actions (unless toggled off).
+  4. User can complete a game session with no visual jank.
 
-## Phase 3: Polish & Experience
-**Goal:** Users enjoy a fluid, responsive experience with audio feedback.
-**Depends On:** Phase 2
+</details>
 
-### Success Criteria
-1. User sees smooth animations when matches occur or lines are added (60fps).
-2. User can request a hint to find a valid move.
-3. User hears sound effects on actions (unless toggled off).
-4. User can complete a game session with no visual jank.
+### 🚧 v1.1 Settings & Theming (In Progress)
 
-### Requirements
-- **GRID-03**: Animations play smoothly (60fps) on match and add lines
-- **HELP-02**: User can request a Hint (highlights a valid pair)
-- **HELP-03**: Hints are finite or cooldown-based (TBD during implementation)
-- **AUDIO-01**: Sound effects play on Tap, Match, and Add Lines
-- **AUDIO-02**: User can toggle sound on/off in Settings
+**Milestone Goal:** Add light mode support, settings screen, and informational pages so the app feels complete and app-store ready.
+
+- [ ] **Phase 4: Settings & Navigation** - Screen structure and navigation skeleton
+- [ ] **Phase 5: Theming** - Light/dark/system theme with persistence
+- [ ] **Phase 6: Info & Legal Screens** - Rules, about, report issue, privacy, and terms
+
+## Phase Details
+
+### Phase 4: Settings & Navigation
+**Goal**: User can access a settings hub from the game header and navigate back
+**Depends on**: Phase 3 (v1.0 complete)
+**Requirements**: NAV-01, NAV-02, NAV-03
+**Success Criteria** (what must be TRUE):
+  1. User can tap a gear icon in the game header to open the settings screen.
+  2. Settings screen displays links for theme toggle, rules, report issue, about, and legal pages.
+  3. User can navigate back to the game from the settings screen.
+**Plans**: TBD
+
+Plans:
+- [ ] 04-01: TBD
+
+### Phase 5: Theming
+**Goal**: App appearance adapts to user's theme preference with persistence
+**Depends on**: Phase 4 (settings screen exists for theme toggle)
+**Requirements**: THEME-01, THEME-02, THEME-03, THEME-04
+**Success Criteria** (what must be TRUE):
+  1. App launches in the device's system theme (light or dark) by default.
+  2. User can select Light, Dark, or System from a theme toggle in settings.
+  3. User's theme preference persists across app restarts.
+  4. All existing screens (game, settings) render correctly in both light and dark themes.
+**Plans**: TBD
+
+Plans:
+- [ ] 05-01: TBD
+
+### Phase 6: Info & Legal Screens
+**Goal**: User can access game rules, about info, report issues, and legal pages from settings
+**Depends on**: Phase 4 (navigation exists), Phase 5 (theming applied)
+**Requirements**: INFO-01, INFO-02, INFO-03, LEGAL-01, LEGAL-02
+**Success Criteria** (what must be TRUE):
+  1. User can view a rules screen explaining matching, connectivity, add lines, hints, and win condition.
+  2. User can view an About page showing app name, version, and developer info.
+  3. User can tap Report Issue to open GitHub issues in the device's browser.
+  4. User can view Privacy Policy and Terms & Conditions pages from settings.
+**Plans**: TBD
+
+Plans:
+- [ ] 06-01: TBD
 
 ## Progress
 
-| Phase | Status | Completion |
-|-------|--------|------------|
-| Phase 1: Core Mechanics | **Complete** | 100% |
-| Phase 2: Game Loop & Persistence | **Complete** | 100% |
-| Phase 3: Polish & Experience | **Complete** | 100% |
+**Execution Order:** 4 → 5 → 6
+
+| Phase | Milestone | Plans Complete | Status | Completed |
+|-------|-----------|----------------|--------|-----------|
+| 1. Core Mechanics | v1.0 | 3/3 | Complete | 2026-02-10 |
+| 2. Game Loop & Persistence | v1.0 | 3/3 | Complete | 2026-02-10 |
+| 3. Polish & Experience | v1.0 | 3/3 | Complete | 2026-02-10 |
+| 4. Settings & Navigation | v1.1 | 0/? | Not started | - |
+| 5. Theming | v1.1 | 0/? | Not started | - |
+| 6. Info & Legal Screens | v1.1 | 0/? | Not started | - |

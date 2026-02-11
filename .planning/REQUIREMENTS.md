@@ -108,23 +108,23 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| THEME-01 | TBD | Pending |
-| THEME-02 | TBD | Pending |
-| THEME-03 | TBD | Pending |
-| THEME-04 | TBD | Pending |
-| NAV-01 | TBD | Pending |
-| NAV-02 | TBD | Pending |
-| NAV-03 | TBD | Pending |
-| INFO-01 | TBD | Pending |
-| INFO-02 | TBD | Pending |
-| INFO-03 | TBD | Pending |
-| LEGAL-01 | TBD | Pending |
-| LEGAL-02 | TBD | Pending |
+| NAV-01 | Phase 4 | Pending |
+| NAV-02 | Phase 4 | Pending |
+| NAV-03 | Phase 4 | Pending |
+| THEME-01 | Phase 5 | Pending |
+| THEME-02 | Phase 5 | Pending |
+| THEME-03 | Phase 5 | Pending |
+| THEME-04 | Phase 5 | Pending |
+| INFO-01 | Phase 6 | Pending |
+| INFO-02 | Phase 6 | Pending |
+| INFO-03 | Phase 6 | Pending |
+| LEGAL-01 | Phase 6 | Pending |
+| LEGAL-02 | Phase 6 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 12 total
-- Mapped to phases: 0
-- Unmapped: 12
+- Mapped to phases: 12
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-02-11*

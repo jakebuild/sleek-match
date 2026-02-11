@@ -1,16 +1,20 @@
 # Project State: Sleek Match
 
-**Core Value:** A frictionless, beautiful puzzle experience that works perfectly offline and respects the player's time.
-**Current Focus:** v1.1 Settings & Theming
+## Project Reference
+
+See: .planning/PROJECT.md (updated 2026-02-11)
+
+**Core value:** A frictionless, beautiful puzzle experience that works perfectly offline and respects the player's time.
+**Current focus:** Phase 4 — Settings & Navigation
 
 ## Current Position
 
-| Attribute | Value |
-|-----------|-------|
-| **Milestone** | v1.1 Settings & Theming |
-| **Phase** | Not started (defining requirements) |
-| **Status** | Defining requirements |
-| **Progress** | [░░░░░░░░░░░░░░░░░░░░] 0% |
+Phase: 4 of 6 (Settings & Navigation)
+Plan: TBD (not yet planned)
+Status: Ready to plan
+Last activity: 2026-02-11 — Roadmap created for v1.1 milestone
+
+Progress: [██████████░░░░░░░░░░] 50% (3/6 phases complete)
 
 ## Game Rules (Canonical)
 
@@ -27,24 +31,34 @@
 
 All 3 phases complete + post-UAT fixes. 14/15 UAT tests passed (1 skipped — MMKV needs device build).
 
-## Context & Memory
+## Performance Metrics
 
-### Key Decisions
-- **Offline-First:** No server dependencies.
-- **FlatList:** Used for web compatibility (FlashList swapped out).
-- **Zustand:** Lightweight state management.
-- **MMKV v4:** `createMMKV()` API with graceful fallback.
-- **RN Animated:** Used over Reanimated for simplicity.
-- **9x9 Random Grid:** 81 cells of random numbers 1-9 (not classic 1-19 sequence).
-- **Diagonal Connectivity:** All 8 directions supported (horiz, vert, diag).
-- **System + Manual Theme:** Defaults to system setting, user can override (v1.1).
-- **Settings from Header:** Gear icon opens settings screen (v1.1).
-- **GitHub Issues for Reports:** Opens browser to GitHub issues (v1.1).
+**Velocity:**
+- Total plans completed: 9 (v1.0)
+- v1.1 plans completed: 0
+
+*Updated after each plan completion*
+
+## Accumulated Context
+
+### Decisions
+
+Decisions are logged in PROJECT.md Key Decisions table.
+Recent decisions affecting current work:
+
+- [v1.1]: System + Manual Theme — defaults to system setting, user can override
+- [v1.1]: Settings from Header — gear icon opens settings screen (no tabs/drawer)
+- [v1.1]: GitHub Issues for Reports — opens browser to GitHub issues URL
 
 ### Known Limitations
+
 - Sound effects need actual .mp3/.wav files bundled in assets/sounds/
 - No haptic feedback yet
 - History stores full cell array (memory could be optimized for very long sessions)
+
+### Blockers/Concerns
+
+None.
 
 ## Session Continuity
 
@@ -52,3 +66,4 @@ All 3 phases complete + post-UAT fixes. 14/15 UAT tests passed (1 skipped — MM
 |------|------|--------|
 | 2026-02-10 | Antigravity | v1.0 Complete (Phases 1-3 + post-UAT fixes) |
 | 2026-02-11 | Antigravity | Milestone v1.1 started: Settings & Theming |
+| 2026-02-11 | Antigravity | v1.1 Roadmap created (Phases 4-6) |
