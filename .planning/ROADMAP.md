@@ -58,10 +58,10 @@
   1. User can tap a gear icon in the game header to open the settings screen.
   2. Settings screen displays links for theme toggle, rules, report issue, about, and legal pages.
   3. User can navigate back to the game from the settings screen.
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 04-01: TBD
+- [ ] 04-01-PLAN.md — Add stack navigation, gear icon in header, and settings hub screen
 
 ### Phase 5: Theming
 **Goal**: App appearance adapts to user's theme preference with persistence
